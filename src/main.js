@@ -1,21 +1,21 @@
 import './style.css'
 import QRCode from 'qrcode'
 
-// get main app element
+// ambil element utama
 const app = document.querySelector('#app')
 
 app.innerHTML = `
   <main class="page">
     <header class="hero">
       <h1>QR Code Generator</h1>
-      <p>Convert text or URL to QR code and download as PNG.</p>
+      <p>Buat QR code dari teks/URL, lalu download PNG.</p>
     </header>
 
     <section class="card">
-      <label class="label" for="input">Enter text or URL</label>
-      <textarea id="input" class="textarea" rows="3" placeholder="Example: https://github.com or any text..."></textarea>
+      <label class="label" for="input">Masukkan teks atau URL</label>
+      <textarea id="input" class="textarea" rows="3" placeholder="Contoh: https://github.com atau teks bebas..."></textarea>
       <div class="row">
-        <div class="hint" id="hint">Press Ctrl/⌘ + Enter to generate</div>
+        <div class="hint" id="hint">Ctrl/⌘ + Enter untuk generate</div>
         <div class="count" id="count">0</div>
       </div>
 
@@ -35,12 +35,12 @@ app.innerHTML = `
     </section>
 
     <footer class="footer">
-      <span>Built with vanilla JS + Vite</span>
+      <span>Dibuat pakai vanilla JS + Vite</span>
     </footer>
   </main>
 `
 
-// get all needed elements
+// ambil semua element yang dibutuhkan
 const elInput = /** @type {HTMLTextAreaElement} */ (document.querySelector('#input'))
 const elCount = document.querySelector('#count')
 const elHint = document.querySelector('#hint')
@@ -51,7 +51,7 @@ const btnGenerate = document.querySelector('#btn-generate')
 const btnDownload = document.querySelector('#btn-download')
 const btnClear = document.querySelector('#btn-clear')
 
-// show error message
+// fungsi untuk nampilin error message
 function setError(message) {
   if (!message) {
     elError.hidden = true
@@ -62,13 +62,13 @@ function setError(message) {
   elError.textContent = message
 }
 
-// toggle loading state on button
+// toggle loading state di button
 function setLoading(isLoading) {
   btnGenerate.disabled = isLoading
   btnGenerate.textContent = isLoading ? 'Generating...' : 'Generate'
 }
 
-// sanitize filename for safe download
+// bersihin nama file biar aman untuk download
 function sanitizeFilename(text) {
   const base = (text || 'qrcode')
     .trim()
@@ -79,15 +79,15 @@ function sanitizeFilename(text) {
   return `${base || 'qrcode'}-${Date.now()}.png`
 }
 
-// main function to generate QR code
+// fungsi utama untuk generate QR code
 async function renderQR() {
   const value = elInput.value.trim()
   if (!value) {
-    setError('Please enter some text or URL first.')
+    setError('Isi dulu teks/URL-nya.')
     return
   }
   if (value.length > 1200) {
-    setError('Text is too long. Please keep it under 1200 characters.')
+    setError('Kepanjangan. Coba ringkas (maks 1200 karakter).')
     return
   }
 
@@ -96,7 +96,7 @@ async function renderQR() {
   btnDownload.disabled = true
 
   try {
-    // generate QR code to canvas
+    // generate QR code ke canvas
     await QRCode.toCanvas(elCanvas, value, {
       width: 320,
       margin: 2,
@@ -106,21 +106,21 @@ async function renderQR() {
     elResult.hidden = false
     btnDownload.disabled = false
   } catch (e) {
-    setError('Failed to generate QR code. Please try again.')
+    setError('Gagal generate QR. Coba lagi.')
     console.error(e)
   } finally {
     setLoading(false)
   }
 }
 
-// download QR code as PNG
+// download QR code sebagai PNG
 function downloadPNG() {
   try {
     const value = elInput.value.trim()
     const name = sanitizeFilename(value)
-    // convert canvas to data URL
+    // convert canvas jadi data URL
     const url = elCanvas.toDataURL('image/png')
-    // create temporary link to trigger download
+    // buat link temporary untuk trigger download
     const a = document.createElement('a')
     a.href = url
     a.download = name
@@ -128,12 +128,12 @@ function downloadPNG() {
     a.click()
     document.body.removeChild(a)
   } catch (e) {
-    setError('Failed to download. Please generate again.')
+    setError('Gagal download. Coba generate ulang.')
     console.error(e)
   }
 }
 
-// reset everything to initial state
+// reset semua ke kondisi awal
 function resetAll() {
   elInput.value = ''
   elCount.textContent = '0'
@@ -143,13 +143,13 @@ function resetAll() {
   elInput.focus()
 }
 
-// update counter when user types
+// update counter saat user ketik
 elInput.addEventListener('input', () => {
   elCount.textContent = String(elInput.value.length)
   if (!elError.hidden) setError('')
 })
 
-// keyboard shortcut: Ctrl/Cmd + Enter to generate
+// shortcut keyboard: Ctrl/Cmd + Enter untuk generate
 elInput.addEventListener('keydown', (e) => {
   if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
     e.preventDefault()
@@ -157,12 +157,12 @@ elInput.addEventListener('keydown', (e) => {
   }
 })
 
-// event listeners for buttons
+// event listeners untuk button
 btnGenerate.addEventListener('click', renderQR)
 btnDownload.addEventListener('click', downloadPNG)
 btnClear.addEventListener('click', resetAll)
 
-// change hint text for mobile devices
+// kalau device mobile, ubah hint text biar lebih jelas
 if (matchMedia('(pointer: coarse)').matches) {
-  elHint.textContent = 'Tap Generate to create QR code'
+  elHint.textContent = 'Tekan Generate untuk membuat QR'
 }
